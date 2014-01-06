@@ -29,6 +29,7 @@ import android.content.Context;
 import android.database.ContentObserver;
 import android.hardware.display.AmbientDisplayConfiguration;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.provider.Telephony.Sms;
