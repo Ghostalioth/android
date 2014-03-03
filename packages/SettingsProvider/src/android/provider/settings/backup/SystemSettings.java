@@ -122,5 +122,6 @@ public class SystemSettings {
         Settings.System.QS_HEADER_IMAGE_URI,
         Settings.System.HEADS_UP_NOTIFICATIONS_THRESHOLD,
         Settings.System.BATTERY_LEVEL_COLORS,
+        Settings.System.TOAST_ANIMATION,
     };
 }
