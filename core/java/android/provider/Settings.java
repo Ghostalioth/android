@@ -6446,6 +6446,18 @@ public final class Settings {
         public static final String STATUS_BAR_CLOCK_FONT_STYLE = "status_bar_clock_font_style";
 
         /**
+         * Transparent power menu and dialogs
+         * @hide
+         */
+        public static final String TRANSPARENT_POWER_MENU = "transparent_power_menu";
+
+        /**
+         * Dim amount around power/reboot menu dialogs
+         * @hide
+         */
+        public static final String TRANSPARENT_POWER_DIALOG_DIM = "transparent_power_dialog_dim";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
@@ -6640,6 +6652,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_PADDING_TOP);
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_URI);
             PRIVATE_SETTINGS.add(BATTERY_LEVEL_COLORS);
+            PRIVATE_SETTINGS.add(TRANSPARENT_POWER_MENU);
+            PRIVATE_SETTINGS.add(TRANSPARENT_POWER_DIALOG_DIM);
         }
 
         /**
