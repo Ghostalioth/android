@@ -1116,6 +1116,9 @@ final class DefaultPermissionGrantPolicy {
         // Pixel Live Wallpapers
         grantSystemFixedPermissionsToSystemPackage(pm, "com.google.pixel.livewallpaper", userId,
                 ALWAYS_LOCATION_PERMISSIONS);
+        
+	// Google Wallpapers
+        grantSystemFixedPermissionsToSystemPackage(pm,"com.google.android.apps.wallpaper", userId, STORAGE_PERMISSIONS);
     }
 
     private String getDefaultSystemHandlerActivityPackageForCategory(PackageManagerWrapper pm,
