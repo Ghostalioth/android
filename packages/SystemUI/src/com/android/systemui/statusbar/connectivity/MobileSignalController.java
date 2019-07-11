@@ -70,6 +70,9 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         implements TunerService.Tunable {
     private static final SimpleDateFormat SSDF = new SimpleDateFormat("MM-dd HH:mm:ss.SSS");
     private static final int STATUS_HISTORY_SIZE = 64;
+    private static final String DATA_DISABLED_ICON =
+            "system:" + Settings.System.DATA_DISABLED_ICON;
+
     private final TelephonyManager mPhone;
     private final CarrierConfigTracker mCarrierConfigTracker;
     private final ImsMmTelManager mImsMmTelManager;
@@ -99,6 +102,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private int mMobileStatusHistoryIndex;
 
     private boolean mIsVowifiAvailable;
+    private boolean mDataDisabledIcon;
 
     private final MobileStatusTracker.Callback mMobileCallback =
             new MobileStatusTracker.Callback() {
@@ -203,6 +207,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         mMobileStatusTracker = mobileStatusTrackerFactory.createTracker(mMobileCallback);
 
         Dependency.get(TunerService.class).addTunable(this, SHOW_FOURG_ICON);
+        Dependency.get(TunerService.class).addTunable(this, DATA_DISABLED_ICON);
     }
 
     @Override
@@ -213,6 +218,11 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
                 setConfiguration(mConfig);
                 notifyListeners();
                 break;
+            case DATA_DISABLED_ICON:
+                mDataDisabledIcon = 
+                    TunerService.parseIntegerSwitch(newValue, true);
+                updateTelephony();
+                break; 
             default:
                 break;
         }
@@ -639,7 +649,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         mCurrentState.roaming = isRoaming();
         if (isCarrierNetworkChangeActive()) {
             mCurrentState.iconGroup = TelephonyIcons.CARRIER_NETWORK_CHANGE;
-        } else if (isDataDisabled() && !mConfig.alwaysShowDataRatIcon) {
+        } else if (isDataDisabled() && mDataDisabledIcon) {
             if (mSubscriptionInfo.getSubscriptionId() != mDefaults.getDefaultDataSubId()) {
                 mCurrentState.iconGroup = TelephonyIcons.NOT_DEFAULT_DATA;
             } else {
