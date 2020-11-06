@@ -25,9 +25,13 @@ import android.content.pm.ResolveInfo;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.SystemProperties;
+import android.os.ServiceManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.android.internal.statusbar.IStatusBarService;
+import android.os.RemoteException;
 
 public class Utils {
 
@@ -87,6 +91,10 @@ public class Utils {
         return ctx.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
+    public static void toggleCameraFlash() {
+        FireActions.toggleCameraFlash();
+    }
+
     public static boolean hasNavbarByDefault(Context context) {
         boolean needsNav = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_showNavigationBar);
@@ -97,5 +105,33 @@ public class Utils {
             needsNav = true;
         }
         return needsNav;
+    }
+
+   /**
+     * Keep FireAction methods below this point.
+     * Place calls to methods above this point.
+     */
+    private static final class FireActions {
+        private static IStatusBarService mStatusBarService = null;
+        private static IStatusBarService getStatusBarService() {
+            synchronized (FireActions.class) {
+                if (mStatusBarService == null) {
+                    mStatusBarService = IStatusBarService.Stub.asInterface(
+                            ServiceManager.getService("statusbar"));
+                }
+                return mStatusBarService;
+            }
+        }
+
+        public static void toggleCameraFlash() {
+            IStatusBarService service = getStatusBarService();
+            if (service != null) {
+                try {
+                    service.toggleCameraFlash();
+                } catch (RemoteException e) {
+                    // do nothing.
+                }
+            }
+        }
     }
 }
