@@ -6458,6 +6458,11 @@ public final class Settings {
          */
         public static final String STATUSBAR_TOP_PADDING = "statusbar_top_padding";
 
+        /**
+         * Select which System charging animation bg to display
+         * @hide
+         */
+        public static final String CHARGING_ANIMATION_BG = "charging_animation_bg";
 
         /**
          * @hide
