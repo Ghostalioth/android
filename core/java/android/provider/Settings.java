@@ -6465,6 +6465,12 @@ public final class Settings {
         public static final String CHARGING_ANIMATION_BG = "charging_animation_bg";
         
         /**
+         * Toggle between stock and custom QS brightness slider
+         * @hide
+         */
+        public static final String BATTERY_LEVEL_COLORS = "battery_level_colors";
+
+        /**
 	 * @hide
 	 */
         public static final String QS_TILE_LABEL_SIZE = "qs_tile_label_size";
@@ -6597,6 +6603,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_PADDING_SIDE);
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_PADDING_TOP);
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_URI);
+            PRIVATE_SETTINGS.add(BATTERY_LEVEL_COLORS);
         }
 
         /**
