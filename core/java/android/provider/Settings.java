@@ -6715,6 +6715,12 @@ public final class Settings {
 	public static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
 
         /**
+         * Toggle between stock and custom QS brightness slider
+         * @hide
+         */
+        public static final String BATTERY_LEVEL_COLORS = "battery_level_colors";
+
+        /**
 	 * @hide
 	 */
         public static final String QS_TILE_LABEL_SIZE = "qs_tile_label_size";
@@ -6862,6 +6868,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_HEADER_SIZE);
             PRIVATE_SETTINGS.add(TRANSPARENT_POWER_MENU);
             PRIVATE_SETTINGS.add(TRANSPARENT_POWER_DIALOG_DIM);
+            PRIVATE_SETTINGS.add(BATTERY_LEVEL_COLORS);
         }
 
         /**
