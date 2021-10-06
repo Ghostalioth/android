@@ -50,10 +50,11 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
+import com.android.systemui.statusbar.policy.KeyguardStateController;
 
 import javax.inject.Inject;
 
-public class PreferredNetworkTile extends QSTileImpl<State> {
+public class PreferredNetworkTile extends SecureQSTile<State> {
 
     public static final String TILE_SPEC = "preferred_network";
 
@@ -71,10 +72,11 @@ public class PreferredNetworkTile extends QSTileImpl<State> {
             MetricsLogger metricsLogger,
             StatusBarStateController statusBarStateController,
             ActivityStarter activityStarter,
-            QSLogger qsLogger
+            QSLogger qsLogger,
+            KeyguardStateController keyguardStateController
     ) {
         super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
-                statusBarStateController, activityStarter, qsLogger);
+                statusBarStateController, activityStarter, qsLogger, keyguardStateController);
         mTelephonyManager = TelephonyManager.from(host.getContext());
     }
 
@@ -89,7 +91,10 @@ public class PreferredNetworkTile extends QSTileImpl<State> {
     }
 
     @Override
-    protected void handleClick(@Nullable View view) {
+    protected void handleClick(@Nullable View view, boolean keyguardShowing) {
+        if (checkKeyguard(view, keyguardShowing)) {
+            return;
+        }
         final int mode = getPreferredNetworkMode();
         final int newMode = TelephonyManagerConstants.getTargetMode(mode);
         if (newMode == -1) return;

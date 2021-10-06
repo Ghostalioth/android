@@ -132,6 +132,7 @@ public class BatterySaverTile extends QSTileImpl<BooleanState> implements
 
     @Override
     protected void handleClick(@Nullable View view) {
+
         if (getState().state == Tile.STATE_UNAVAILABLE) {
             return;
         }
