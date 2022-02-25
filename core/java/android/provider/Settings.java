@@ -5868,6 +5868,11 @@ public final class Settings {
         /**
          * @hide
          */
+        public static final String QS_FOOTER_DATA_USAGE = "qs_footer_data_usage";
+
+        /**
+	 * @hide
+         */
         public static final String STATUSBAR_BATTERY_BAR_COLOR = "statusbar_battery_bar_color";
 
         /**
