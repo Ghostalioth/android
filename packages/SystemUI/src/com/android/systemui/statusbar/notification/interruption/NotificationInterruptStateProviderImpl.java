@@ -479,8 +479,8 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
             return false;
         }
 
-        if (entry.getImportance() < NotificationManager.IMPORTANCE_HIGH) {
-            if (log) mLogger.logNoHeadsUpNotImportant(entry);
+        if (entry.getImportance() < getNotificationImportanceForUser()) {
+            mLogger.logNoHeadsUpNotImportant(entry);
             return false;
         }
 
@@ -516,6 +516,13 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
 
         if (log) mLogger.logHeadsUp(entry);
         return true;
+    }
+
+    private int getNotificationImportanceForUser() {
+        return Settings.System.getIntForUser(
+                mContentResolver,
+                Settings.System.HEADS_UP_NOTIFICATIONS_THRESHOLD,
+                NotificationManager.IMPORTANCE_HIGH, UserHandle.USER_CURRENT);
     }
 
     /**

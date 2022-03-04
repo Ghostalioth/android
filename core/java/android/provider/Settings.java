@@ -6511,6 +6511,12 @@ public final class Settings {
          * @hide
          */
         public static final String CHARGING_ANIMATION_BG = "charging_animation_bg";
+
+	/**
+	 * Heads up notifications threshold
+	 * @hide
+	 */
+	public static final String HEADS_UP_NOTIFICATIONS_THRESHOLD = "heads_up_notifications_threshold";
         
         /**
          * Toggle between stock and custom QS brightness slider
