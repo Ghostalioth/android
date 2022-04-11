@@ -95,7 +95,7 @@ public class NavigationBarController implements
     private final TaskbarDelegate mTaskbarDelegate;
     private final NavBarHelper mNavBarHelper;
     private int mNavMode;
-    @VisibleForTesting boolean mTaskbarShowing;
+    private boolean mTaskbarShowing;
 
     /** A displayId - nav bar maps. */
     @VisibleForTesting
@@ -285,7 +285,7 @@ public class NavigationBarController implements
         } else {
             mTaskbarDelegate.destroy();
         }
-        return taskbarEnabled;
+        return shouldShowTaskbar();
     }
 
     @Override
@@ -369,7 +369,7 @@ public class NavigationBarController implements
 
         // We may show TaskBar on the default display for large screen device. Don't need to create
         // navigation bar for this case.
-        if (isOnDefaultDisplay && initializeTaskbarIfNecessary()) {
+        if (shouldShowTaskbar() && isOnDefaultDisplay) {
             return;
         }
 
@@ -501,7 +501,6 @@ public class NavigationBarController implements
     private boolean shouldShowTaskbar() {
         return mTaskbarShowing;
     }
-
     /** @return {@link NavigationBar} on the default display. */
     @Nullable
     public NavigationBar getDefaultNavigationBar() {
