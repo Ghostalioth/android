@@ -104,5 +104,9 @@ public class SystemSettings {
         Settings.System.MAX_VISIBLE_NOTIFICATION_ICONS,
         Settings.System.QS_PANEL_STYLE, 
         Settings.System.HAPTIC_ON_SLIDER,
+        Settings.System.QS_TILE_LABEL_HIDE,
+        Settings.System.QS_TILE_VERTICAL_LAYOUT,
+        Settings.System.QS_LAYOUT,
+        Settings.System.QQS_LAYOUT
     };
 }
