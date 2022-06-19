@@ -102,5 +102,6 @@ public class SystemSettings {
         Settings.System.SCREEN_FLASH_NOTIFICATION_COLOR,
         Settings.System.QS_DATA_USAGE_PANEL,
         Settings.System.MAX_VISIBLE_NOTIFICATION_ICONS,
+        Settings.System.QS_PANEL_STYLE
     };
 }
