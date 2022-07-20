@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  * Progres bar preference with a usage summary and a total summary.
  * This preference shows number in usage summary with enlarged font size.
  */
-public class UsageProgressBarPreference extends Preference {
+public class StorageUsageProgressBarPreference extends Preference {
 
     private final Pattern mNumberPattern = Pattern.compile("[\\d]*[\\٫.,]?[\\d]+");
     private static final int ANIM_DURATION = 1200;
@@ -57,7 +57,7 @@ public class UsageProgressBarPreference extends Preference {
      *                access the current theme, resources, {@link SharedPreferences}, etc.
      * @param attrs   The attributes of the XML tag that is inflating the preference
      */
-    public UsageProgressBarPreference(Context context, AttributeSet attrs) {
+    public StorageUsageProgressBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayoutResource(R.layout.preference_usage_progress_bar);
     }
@@ -67,7 +67,7 @@ public class UsageProgressBarPreference extends Preference {
      *
      * @param context The Context this is associated with.
      */
-    public UsageProgressBarPreference(Context context) {
+    public StorageUsageProgressBarPreference(Context context) {
         this(context, null);
     }
 
@@ -151,18 +151,16 @@ public class UsageProgressBarPreference extends Preference {
         usageSummary.setText(mUsageSummary);
 
         final TextView totalSummary = (TextView) holder.findViewById(R.id.total_summary);
-        if (totalSummary != null && mTotalSummary != null) {
+        if (mTotalSummary != null) {
             totalSummary.setText(mTotalSummary);
         }
 
         final TextView bottomSummary = (TextView) holder.findViewById(R.id.bottom_summary);
-        if (bottomSummary != null) {
-            if (TextUtils.isEmpty(mBottomSummary)) {
-                bottomSummary.setVisibility(View.GONE);
-            } else {
-                bottomSummary.setVisibility(View.VISIBLE);
-                bottomSummary.setText(mBottomSummary);
-            }
+        if (TextUtils.isEmpty(mBottomSummary)) {
+            bottomSummary.setVisibility(View.GONE);
+        } else {
+            bottomSummary.setVisibility(View.VISIBLE);
+            bottomSummary.setText(mBottomSummary);
         }
 
         final ProgressBar progressBar = (ProgressBar) holder.findViewById(android.R.id.progress);
@@ -179,14 +177,14 @@ public class UsageProgressBarPreference extends Preference {
         }
 
         if (mPercent >= 51) {
-            progressBar.setProgressTintList(context.getColorStateList(R.color.battery_high));
-            progressBar.setProgressBackgroundTintList(context.getColorStateList(R.color.battery_high));
+            progressBar.setProgressTintList(context.getColorStateList(R.color.battery_low));
+            progressBar.setProgressBackgroundTintList(context.getColorStateList(R.color.battery_low));
         } else if (mPercent >= 20) {
             progressBar.setProgressTintList(context.getColorStateList(R.color.battery_medium));
             progressBar.setProgressBackgroundTintList(context.getColorStateList(R.color.battery_medium));
         } else if (mPercent <= 19) {
-            progressBar.setProgressTintList(context.getColorStateList(R.color.battery_low));
-            progressBar.setProgressBackgroundTintList(context.getColorStateList(R.color.battery_low));
+            progressBar.setProgressTintList(context.getColorStateList(R.color.battery_high));
+            progressBar.setProgressBackgroundTintList(context.getColorStateList(R.color.battery_high));
         }
     }
 
@@ -203,18 +201,5 @@ public class UsageProgressBarPreference extends Preference {
             return spannableSummary;
         }
         return summary;
-    }
-    
-    private void animateBatteryLevel(final ProgressBar progressbar, final int startValue, final int endValue) {
-        final ValueAnimator animator = ValueAnimator.ofInt(startValue, endValue);
-        animator.setDuration(1000);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int animatedValue = (int) animation.getAnimatedValue();
-                progressbar.setProgress(animatedValue);
-            }
-        });
-        animator.start();
     }
 }
