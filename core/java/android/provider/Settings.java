@@ -12963,7 +12963,7 @@ public final class Settings {
          */
         public static final String DOZE_PICK_UP_GESTURE_AMBIENT = "doze_pick_up_gesture_ambient";
 
-       /**
+        /**
          * Whether to show ambient instead of waking for the tap gesture
          * @hide
          */
@@ -12974,6 +12974,18 @@ public final class Settings {
          * @hide
          */
         public static final String MEDIA_CONTROLS_ALWAYS_SHOW_TIME = "media_controls_always_show_time";
+
+        /**
+         * Show lyric in status bar when playing music
+         * <ul>
+         *    <li> 0 = disabled </li>
+         *    <li> 1 = enabled </li>
+         * </ul>
+         *
+         * @hide
+         */
+        @Readable
+        public static final String STATUS_BAR_SHOW_LYRIC = "status_bar_show_lyric";
 
         /**
          * Whether to allow sensitive qs tiles on keyguard
