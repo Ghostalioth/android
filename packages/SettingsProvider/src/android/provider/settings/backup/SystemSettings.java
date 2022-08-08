@@ -87,6 +87,7 @@ public class SystemSettings {
         Settings.System.DISPLAY_COLOR_MODE,
         Settings.System.ALARM_ALERT,
         Settings.System.NOTIFICATION_LIGHT_PULSE,
+<<<<<<< HEAD
         Settings.System.MAX_VISIBLE_NOTIFICATION_ICONS,
         Settings.System.QS_PANEL_STYLE,
         Settings.System.QS_HAPTIC_FEEDBACK,
@@ -109,6 +110,7 @@ public class SystemSettings {
         Settings.System.QS_TILE_SECONDARY_LABEL_SIZE,
         Settings.System.BATTERY_LEVEL_COLORS,
         Settings.System.TOAST_ANIMATION,
-        Settings.System.HEADS_UP_NOTIFICATIONS_THRESHOLD
+        Settings.System.HEADS_UP_NOTIFICATIONS_THRESHOLD,
+        Settings.System.QS_DATA_USAGE_PANEL,
     };
 }

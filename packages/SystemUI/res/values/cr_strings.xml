@@ -184,7 +184,13 @@
     <string name="global_action_restart_systemui">SystemUI</string>
 
     <!-- Data usage info in QS footer -->
-    <string name="usage_data">used today</string>
+    <string name="usage_data">used</string>
     <string name="usage_data_default_suffix">Data</string>
     <string name="usage_wifi_default_suffix">Wi-Fi</string>
+
+    <!-- Data usage panel -->
+    <string name="total_internet_usage">Total internet usage (Since boot)</string>
+    <string name="cellular_usage">Mobile data usage</string>
+    <string name="wifi_usage">Wifi data usage</string>
+
 </resources>

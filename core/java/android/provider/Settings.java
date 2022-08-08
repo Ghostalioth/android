@@ -5989,6 +5989,11 @@ public final class Settings {
         public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
 
         /**
+         * @hide
+         */
+        public static final String QS_DATA_USAGE_PANEL = "qs_data_usage_panel";
+
+        /**
          * Gesture navbar length mode.
          * Supported modes: 0 for short length, 1 for normal and 2 for long.
          * @hide
