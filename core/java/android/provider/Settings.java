@@ -6534,6 +6534,11 @@ public final class Settings {
          * @hide
          */
         public static final String CHARGING_ANIMATION_BG = "charging_animation_bg";
+        
+        /**
+	 * @hide
+	 */
+        public static final String QS_TILE_LABEL_SIZE = "qs_tile_label_size";
 
         /**
          * @hide
