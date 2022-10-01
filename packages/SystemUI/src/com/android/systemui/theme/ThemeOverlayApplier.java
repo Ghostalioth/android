@@ -140,13 +140,10 @@ public class ThemeOverlayApplier implements Dumpable {
             OVERLAY_CATEGORY_SHAPE,
             OVERLAY_CATEGORY_FONT,
             OVERLAY_CATEGORY_ACCENT_COLOR,
-<<<<<<< HEAD
             OVERLAY_CATEGORY_DYNAMIC_COLOR,
-=======
             OVERLAY_CATEGORY_UI_STYLE_ANDROID,
             OVERLAY_CATEGORY_UI_STYLE_SETTINGS,
             OVERLAY_CATEGORY_UI_STYLE_SYSUI,
->>>>>>> b96b4d52a62b (base: Add support for UI Styles)
             OVERLAY_CATEGORY_ICON_ANDROID,
             OVERLAY_CATEGORY_ICON_SYSUI,
             OVERLAY_CATEGORY_ICON_SETTINGS,
