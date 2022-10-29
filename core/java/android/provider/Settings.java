@@ -6480,6 +6480,12 @@ public final class Settings {
         public static final String RECENTS_LOCKED_TASKS = "recents_locked_tasks";
 
         /**
+         * Volume styles
+         * @hide
+         */
+        public static final String CUSTOM_VOLUME_STYLES = "custom_volume_styles";
+
+        /**
          * Whether to display set of animations when prompting the power menu
          *
          * @hide
