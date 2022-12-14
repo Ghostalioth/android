@@ -41,6 +41,7 @@ import com.android.systemui.statusbar.notification.stack.StackStateAnimator;
  */
 public class ScrimDrawable extends Drawable {
     private static final String TAG = "ScrimDrawable";
+    private static final long COLOR_ANIMATION_DURATION = 1000;
 
     private boolean mShouldUseLargeScreenSize;
     private final Paint mPaint;
