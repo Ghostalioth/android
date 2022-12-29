@@ -95,4 +95,12 @@
 
     <!-- Build properties from a GMS certified device -->
     <java-symbol type="array" name="config_certifiedBuildProperties" />
+    
+    <!-- Settings Restart -->
+    <java-symbol type="string" name="settings_restart_title" />
+    <java-symbol type="string" name="settings_restart_message" />
+
+    <!-- Soft restart dialog -->
+    <java-symbol type="string" name="system_restart_title" />
+    <java-symbol type="string" name="system_restart_message" />
 </resources>
