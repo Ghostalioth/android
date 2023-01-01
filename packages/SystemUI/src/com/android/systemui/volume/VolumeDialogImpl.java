@@ -36,9 +36,12 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import static com.android.internal.jank.InteractionJankMonitor.CUJ_VOLUME_CONTROL;
 import static com.android.internal.jank.InteractionJankMonitor.Configuration.Builder;
+
 import static com.android.systemui.volume.Events.DISMISS_REASON_POSTURE_CHANGED;
 import static com.android.systemui.people.PeopleSpaceUtils.convertDrawableToBitmap;
 import static com.android.systemui.volume.Events.DISMISS_REASON_SETTINGS_CLICKED;
+
+import static com.android.systemui.people.PeopleSpaceUtils.convertDrawableToBitmap;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
