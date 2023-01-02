@@ -6422,6 +6422,11 @@ public final class Settings {
         public static final String MUSIC_VOLUME_PANEL_DIALOG = "music_volume_panel_dialog";
 
         /**
+         * @hide
+         */
+        public static final String HIDE_NOTIFICATION_ICONS = "hide_notification_icons";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
