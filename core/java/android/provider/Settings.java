@@ -12629,6 +12629,10 @@ public final class Settings {
         public static final String SHOW_CLIPBOARD_OVERLAY = "show_clipboard_overlay";
 
         /**
+	 * Quicksettings tile shape
+	 * @hide
+	 */
+	public static final String QS_TILE_SHAPE = "qs_tile_shape";
 
         /**
          *  Toggle the media squiggle animation
