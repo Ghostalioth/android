@@ -47,6 +47,7 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.plugins.qs.QSTile.State;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 
@@ -63,6 +64,7 @@ public class PreferredNetworkTile extends QSTileImpl<State> {
     @Inject
     public PreferredNetworkTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -71,7 +73,7 @@ public class PreferredNetworkTile extends QSTileImpl<State> {
             ActivityStarter activityStarter,
             QSLogger qsLogger
     ) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
         mTelephonyManager = TelephonyManager.from(host.getContext());
     }
