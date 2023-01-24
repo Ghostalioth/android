@@ -6245,6 +6245,12 @@ public final class Settings {
         public static final String QS_BRIGHTNESS_SLIDER_HAPTIC = "qs_brightness_slider_haptic";
         
         /**
+         * Whether to display 5G icon instead LTE
+         * @hide
+         */
+        public static final String SHOW_FIVEG_ICON = "show_fiveg_icon";
+
+        /**
          * @hide
          */
         public static final String QS_TILE_LABEL_HIDE = "qs_tile_label_hide";
