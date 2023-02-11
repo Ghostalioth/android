@@ -313,6 +313,36 @@ public class EdgeEffect {
         AsyncTask.execute(() -> vibrator.vibrate(effect));
     }
 
+    private void triggerVibration() {
+        if (vibrator == null || !callerHasVibratePermission || vibrateIntensity == 0) {
+            return;
+        }
+
+            VibrationEffect effect;
+            switch (vibrateIntensity) {
+                case 1:
+                    effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_TEXTURE_TICK);
+                    break;
+                case 2:
+                    effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK);
+                    break;
+                case 3:
+                    effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK);
+                    break;
+                case 4:
+                    effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK);
+                    break;
+                case 5:
+                    effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK);
+                    break;
+                default:
+                    effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK);
+                    break;
+            }
+
+        AsyncTask.execute(() -> vibrator.vibrate(effect));
+    }
+
     /**
      * Set the size of this edge effect in pixels.
      *

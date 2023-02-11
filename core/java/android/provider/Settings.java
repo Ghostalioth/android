@@ -12552,10 +12552,10 @@ public final class Settings {
         public static final String BACK_GESTURE_ARROW = "back_gesture_arrow";
 
         /**
-         * Whether or not to vibrate when back gesture is used
+         * Back gesture haptics intensity
          * @hide
          */
-        public static final String BACK_GESTURE_HAPTIC = "back_gesture_haptic";
+        public static final String BACK_GESTURE_HAPTIC_INTENSITY = "back_gesture_haptic_intensity";
 
         /**
          * Control whether the process CPU info meter should be shown.
