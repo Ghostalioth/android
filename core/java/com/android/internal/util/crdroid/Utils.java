@@ -22,6 +22,7 @@ import android.app.IActivityManager;
 import android.app.ActivityManager;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
