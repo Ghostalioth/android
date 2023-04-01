@@ -155,13 +155,17 @@ class DefaultClockController(
         open fun recomputePadding(targetRegion: Rect?) {}
 
         fun updateColor() {
+            val customClockColorEnabled = Secure.getIntForUser(ctx.getContentResolver(),
+                    Secure.KG_CUSTOM_CLOCK_COLOR_ENABLED, 0, UserHandle.USER_CURRENT) != 0
+            val customClockColor = Secure.getIntForUser(ctx.getContentResolver(),
+                    Secure.KG_CUSTOM_CLOCK_COLOR, 0xFFFFFFFF.toInt(), UserHandle.USER_CURRENT)
             val color =
                 if (seedColor != null) {
                     seedColor!!
                 } else if (isRegionDark) {
-                    resources.getColor(android.R.color.system_accent1_100)
+                    if (customClockColorEnabled) customClockColor.toInt() else resources.getColor(android.R.color.system_accent1_100)
                 } else {
-                    resources.getColor(android.R.color.system_accent2_600)
+		            if (customClockColorEnabled) customClockColor.toInt() else resources.getColor(android.R.color.system_accent2_600)
                 }
 
             if (currentColor == color) {
