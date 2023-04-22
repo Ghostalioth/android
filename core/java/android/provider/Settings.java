@@ -6264,6 +6264,11 @@ public final class Settings {
          */
         public static final String QQS_LAYOUT = "qqs_layout";
 
+	/**
+	 * @hide
+	 */
+	public static final String QS_UI_STYLE = "qs_ui_style";
+
         /**
          * QS Header image
          * format = "qs_header_image_" + QS_HEADER_IMAGE
@@ -6271,7 +6276,7 @@ public final class Settings {
          * @hide
          */
         public static final String QS_HEADER_IMAGE = "qs_header_image";
-        
+
         /**
          * QS header image tint
          * 0 - No tint

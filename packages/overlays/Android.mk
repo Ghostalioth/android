@@ -37,7 +37,6 @@ LOCAL_REQUIRED_MODULES := \
 	NavigationBarModeGesturalOverlayNarrowBack \
 	NavigationBarModeGesturalOverlayWideBack \
 	NavigationBarModeGesturalOverlayExtraWideBack \
-	preinstalled-packages-platform-overlays.xml
 	preinstalled-packages-platform-overlays.xml \
 	qs_portrait_2x2 \
 	qs_portrait_2x3 \
