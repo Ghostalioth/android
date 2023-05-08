@@ -5982,7 +5982,9 @@ public final class Settings {
          */
         public static final String GESTURE_NAVBAR_LENGTH_MODE = "gesture_navbar_length_mode";
 
-        /** @hide */
+        /**
+	 * @hide
+	 */
         public static final String BACK_GESTURE_HEIGHT = "back_gesture_height";
 
         /**
@@ -6278,6 +6280,13 @@ public final class Settings {
         public static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
 
         /**
+         » Whether to enable QS haptic feedback
+         *
+         * @hide
+         */
+         public static final String QS_HAPTIC_FEEDBACK = "qs_haptic_feedback";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
@@ -6433,6 +6442,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUSBAR_LEFT_PADDING);
             PRIVATE_SETTINGS.add(STATUSBAR_RIGHT_PADDING);
             PRIVATE_SETTINGS.add(STATUSBAR_TOP_PADDING);
+            PRIVATE_SETTINGS.add(QS_HAPTIC_FEEDBACK);
         }
 
         /**
