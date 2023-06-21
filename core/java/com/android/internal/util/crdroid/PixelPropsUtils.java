@@ -36,6 +36,7 @@ public class PixelPropsUtils {
     private static final boolean DEBUG = false;
 
     private static final Map<String, Object> propsToChangeGeneric;
+    private static final Map<String, Object> propsToChangePixelTablet;
     private static final Map<String, Object> propsToChangePixel5;
     private static final Map<String, Object> propsToChangePixel7Pro;
     private static final Map<String, Object> propsToChangePixelXL;
@@ -48,6 +49,11 @@ public class PixelPropsUtils {
     private static final Map<String, Object> propsToChangeMI13P;
     private static final Map<String, Object> propsToChangeF5;
     private static final Map<String, ArrayList<String>> propsToKeep;
+
+    private static final String[] packagesToChangePixelTablet = {
+            "com.google.android.googlequicksearchbox",
+            "com.google.android.apps.googleassistant",
+    };
 
     // Packages to Spoof as Pixel 7 Pro
     private static final String[] packagesToChangePixel7Pro = {
@@ -176,6 +182,13 @@ public class PixelPropsUtils {
         propsToChangeGeneric = new HashMap<>();
         propsToChangeGeneric.put("TYPE", "user");
         propsToChangeGeneric.put("TAGS", "release-keys");
+        propsToChangePixelTablet = new HashMap<>();
+        propsToChangePixelTablet.put("BRAND", "google");
+        propsToChangePixelTablet.put("MANUFACTURER", "Google");
+        propsToChangePixelTablet.put("DEVICE", "tangorpro");
+        propsToChangePixelTablet.put("PRODUCT", "tangorpro");
+        propsToChangePixelTablet.put("MODEL", "Pixel Tablet");
+        propsToChangePixelTablet.put("FINGERPRINT", "google/tangorpro/tangorpro:13/TQ3A.230605.009.A1/10100517:user/release-keys");
         propsToChangePixel7Pro = new HashMap<>();
         propsToChangePixel7Pro.put("BRAND", "google");
         propsToChangePixel7Pro.put("MANUFACTURER", "Google");
@@ -266,6 +279,8 @@ public class PixelPropsUtils {
                     propsToChange.putAll(propsToChangePixel7Pro);
                 } else if (Arrays.asList(packagesToChangePixelXL).contains(packageName)) {
                     propsToChange.putAll(propsToChangePixelXL);
+                } else if (Arrays.asList(packagesToChangePixelTablet).contains(packageName)) {
+                    propsToChange.putAll(propsToChangePixelTablet);
                 } else {
                     propsToChange.putAll(propsToChangePixel5);
                 }
