@@ -62,6 +62,8 @@
 
     <dimen name="status_bar_battery_icon_height_landscape_ios15">12.0dip</dimen>
     <dimen name="status_bar_battery_icon_height_landscape_ios16">12.0dip</dimen>
+    <dimen name="status_bar_battery_icon_width_landscape_origami">20.0dip</dimen>
+    <dimen name="status_bar_battery_icon_height_landscape_origami">12.0dip</dimen>
 
     <!-- Tri-state UI -->
     <dimen name="tri_state_down_dialog_position">850.0px</dimen>
