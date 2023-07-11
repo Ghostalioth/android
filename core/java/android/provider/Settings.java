@@ -12095,6 +12095,12 @@ public final class Settings {
         /**
          * @hide
          */
+        public static final String PREF_KG_USER_SWITCHER = "pref_kg_user_switcher";
+
+        /**
+         * Whether to show privacy indicator for location
+         * @hide
+         */
         public static final String KG_LARGE_CLOCK_TEXT_SIZE = "kg_large_clock_text_size";
 
         /**
