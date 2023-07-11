@@ -12328,6 +12328,11 @@ public final class Settings {
         public static final String AMBIENT_PULSE_ENABLED = "ambient_pulse_enabled";
 
         /**
+         * @hide
+         */
+        public static final String PREF_KG_USER_SWITCHER = "pref_kg_user_switcher";
+
+        /**
          * Pulse lockscreen music visualizer
          * @hide
          */
