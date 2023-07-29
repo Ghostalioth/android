@@ -1,13 +1,5 @@
 <resources>
 
-    <!-- Smart cutoff temperature -->
-    <java-symbol type="integer" name="config_smartCutoffTemperature" />
-    <java-symbol type="integer" name="config_smartCutoffResumeTemperature" />
-
-    <!-- Settings Restart -->
-    <java-symbol type="string" name="settings_restart_title" />
-    <java-symbol type="string" name="settings_restart_message" />
-
     <!-- App lock -->
     <java-symbol type="string" name="unlock_application" />
     <java-symbol type="array" name="config_appLockAllowedSystemApps" />
