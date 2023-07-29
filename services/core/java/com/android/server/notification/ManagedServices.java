@@ -1053,22 +1053,18 @@ abstract public class ManagedServices {
         if (service == null) {
             return false;
         }
-        synchronized (mMutex) {
-            ManagedServiceInfo info = getServiceFromTokenLocked(service);
-            if (info != null) {
-                return true;
-            }
-            return false;
+        ManagedServiceInfo info = getServiceFromTokenLocked(service);
+        if (info != null) {
+            return true;
         }
+        return false;
     }
 
     protected ManagedServiceInfo checkServiceTokenLocked(IInterface service) {
         checkNotNull(service);
-        synchronized (mMutex) {
-            ManagedServiceInfo info = getServiceFromTokenLocked(service);
-            if (info != null) {
-                return info;
-            }
+        ManagedServiceInfo info = getServiceFromTokenLocked(service);
+        if (info != null) {
+            return info;
         }
         throw new SecurityException("Disallowed call from unknown " + getCaption() + ": "
                 + service + " " + service.getClass());
