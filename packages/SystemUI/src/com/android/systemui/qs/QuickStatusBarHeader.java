@@ -46,7 +46,7 @@ import android.widget.Space;
 import android.widget.TextView;
 
 import com.android.internal.graphics.ColorUtils;
-import com.android.internal.util.superior.ImageHelper;
+import com.android.internal.util.crdroid.ImageHelper;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
 
