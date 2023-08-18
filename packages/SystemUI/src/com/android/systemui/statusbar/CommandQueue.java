@@ -172,7 +172,7 @@ public class CommandQueue extends IStatusBar.Stub implements
     private static final int MSG_SET_BLOCKED_GESTURAL_NAVIGATION = 73 << MSG_SHIFT;
     private static final int MSG_SCREEN_PINNING_STATE_CHANGED      = 74 << MSG_SHIFT;
     private static final int MSG_LEFT_IN_LANDSCAPE_STATE_CHANGED   = 75 << MSG_SHIFT;
-    private static final int MSG_TOGGLE_CAMERA_FLASH = 75 << MSG_SHIFT;
+    private static final int MSG_TOGGLE_CAMERA_FLASH = 76 << MSG_SHIFT;
 
     public static final int FLAG_EXCLUDE_NONE = 0;
     public static final int FLAG_EXCLUDE_SEARCH_PANEL = 1 << 0;
