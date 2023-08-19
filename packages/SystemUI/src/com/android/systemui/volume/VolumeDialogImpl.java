@@ -151,7 +151,7 @@ import com.android.systemui.util.RoundedCornerProgressDrawable;
 
 import lineageos.providers.LineageSettings;
 
-import com.android.internal.util.rising.ThemeUtils;
+import com.android.internal.util.crdroid.ThemeUtils;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
