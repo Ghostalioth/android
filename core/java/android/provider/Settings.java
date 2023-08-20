@@ -5925,31 +5925,6 @@ public final class Settings {
         public static final String QS_TILE_ANIMATION_INTERPOLATOR = "qs_tile_animation_interpolator";
 
         /**
-         * @hide
-         */
-        public static final String QS_LAYOUT_COLUMNS_LANDSCAPE = "qs_layout_columns_landscape";
-
-        /**
-         * @hide
-         */
-        public static final String QS_LAYOUT_COLUMNS = "qs_layout_columns";
-
-        /**
-         * @hide
-         */
-        public static final String QS_TILE_VERTICAL_LAYOUT = "qs_tile_vertical_layout";
-
-        /**
-         * @hide
-         */
-        public static final String QS_TILE_LABEL_HIDE = "qs_tile_label_hide";
-
-        /**
-         * @hide
-         */
-        public static final String QS_TILE_LABEL_SIZE = "qs_tile_label_size";
-
-        /**
          * Switch between filters for lockscreen album art
          * @hide
          */
