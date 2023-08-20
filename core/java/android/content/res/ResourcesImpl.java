@@ -892,7 +892,7 @@ public class ResourcesImpl {
             } finally {
                 stack.pop();
             }
-        } catch (Exception | StackOverflowError e) {
+       } catch (Exception | StackOverflowError e) {
             Trace.traceEnd(Trace.TRACE_TAG_RESOURCES);
             if (file.contains("drawable") && file.contains("ic_app_icon")&& file.endsWith(".xml")) {
                 return wrapper.getDrawable(com.android.internal.R.drawable.ic_app_icon);
