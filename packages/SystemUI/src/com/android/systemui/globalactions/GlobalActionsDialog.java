@@ -52,9 +52,6 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowInsets;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -617,15 +614,6 @@ public class GlobalActionsDialog extends GlobalActionsDialogLite
                 mControlsUiController.show(mControlsView, this::dismissForControlsActivity,
                         null /* activityContext */);
             }
-
-            ViewGroup root = (ViewGroup) mGlobalActionsLayout.getRootView();
-            root.setOnApplyWindowInsetsListener((v, windowInsets) -> {
-                root.setPadding(windowInsets.getStableInsetLeft(),
-                        windowInsets.getStableInsetTop(),
-                        windowInsets.getStableInsetRight(),
-                        windowInsets.getStableInsetBottom());
-                return WindowInsets.CONSUMED;
-            });
 
             mBackgroundDrawable.setAlpha(0);
             float xOffset = mGlobalActionsLayout.getAnimationOffsetX();
