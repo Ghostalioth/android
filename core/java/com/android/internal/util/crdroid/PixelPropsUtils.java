@@ -126,6 +126,7 @@ public class PixelPropsUtils {
             "com.netease.lztgglobal",
             "com.pubg.imobile",
             "com.pubg.krmobile",
+	    "com.pubg.imobile",
             "com.rekoo.pubgm",
             "com.riotgames.league.wildrift",
             "com.riotgames.league.wildrifttw",
