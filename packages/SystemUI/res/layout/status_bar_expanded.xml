@@ -40,14 +40,14 @@
         android:layout_marginLeft="62dp"
         android:layout_marginRight="62dp"
         android:layout_width="wrap_content"
-        android:layout_height="48dp">
+        android:layout_height="38dp">
         <ImageView
             android:id="@+id/ticker_comeback_icon"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
             android:background="@drawable/qs_alike_top"
-            android:layout_width="36dp"
-            android:layout_height="36dp"/>
+            android:layout_width="29dp"
+            android:layout_height="29dp"/>
         <TextView
             android:id="@+id/ticker_content"
             android:layout_marginLeft="6dp"
