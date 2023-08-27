@@ -6342,6 +6342,12 @@ public final class Settings {
           **/
         public static final String QS_HEADER_IMAGE_URI = "qs_header_image_uri";
 
+	/**
+	 * Random header
+	 * @hide
+	 */
+	public static final String QS_RANDOM_HEADER_IMAGE = "qs_random_header_image";
+
         /**
          * @hide
          */
