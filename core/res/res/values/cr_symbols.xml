@@ -247,4 +247,8 @@
     <java-symbol type="style" name="Animation.Toast.Translucent" />
     <java-symbol type="style" name="Animation.Toast.SlideRightLeft" />
     <java-symbol type="style" name="Animation.Toast.SlideLeftRight" />
+
+    <!-- SystemUI Restart -->
+    <java-symbol type="string" name="systemui_restart_title" />
+    <java-symbol type="string" name="systemui_restart_message" />
 </resources>
