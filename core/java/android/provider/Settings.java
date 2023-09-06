@@ -6682,6 +6682,12 @@ public final class Settings {
         public static final String QS_TILE_SECONDARY_LABEL_SIZE = "qs_tile_secondary_label_size";
 
         /**
+          * QS header size
+          * @hide
+          */
+          public static final String QS_HEADER_SIZE = "qs_header_size";
+
+        /**
          * @hide
          */
         @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
@@ -6810,6 +6816,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_PADDING_SIDE);
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_PADDING_TOP);
             PRIVATE_SETTINGS.add(QS_HEADER_IMAGE_URI);
+            PRIVATE_SETTINGS.add(QS_HEADER_SIZE);
         }
 
         /**
