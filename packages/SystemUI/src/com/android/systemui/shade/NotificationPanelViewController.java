@@ -326,8 +326,6 @@ public final class NotificationPanelViewController implements Dumpable {
             "system:" + Settings.System.RETICKER_STATUS;
     private static final String RETICKER_COLORED =
             "system:" + Settings.System.RETICKER_COLORED;
-    private static final String NOTIFICATION_MATERIAL_DISMISS =
-            "system:" + Settings.System.NOTIFICATION_MATERIAL_DISMISS;
     private static final String QS_UI_STYLE =
             "system:" + Settings.System.QS_UI_STYLE;
 
@@ -672,13 +670,10 @@ public final class NotificationPanelViewController implements Dumpable {
     private NotificationStackScrollLayout mNotificationStackScroller;
     private boolean mReTickerStatus;
     private boolean mReTickerColored;
-    private boolean mReTickerVisible;
 
     private boolean mBlockedGesturalNavigation = false;
     
     private boolean mIsA11Style;
-
-    private boolean mShowDimissButton;
 
     private final Runnable mFlingCollapseRunnable = () -> fling(0, false /* expand */,
             mNextCollapseSpeedUpFactor, false /* expandBecauseOfFalsing */);
@@ -2582,6 +2577,9 @@ public final class NotificationPanelViewController implements Dumpable {
         }
         float finalAlpha = alpha > 0.84f ? alpha : 0f;
         mNotificationStackScrollLayoutController.setAlpha(finalAlpha);
+        if (mBarState != StatusBarState.KEYGUARD && !isFullyCollapsed() && !isPanelVisibleBecauseOfHeadsUp()) {
+            mCentralSurfaces.updateDismissAllVisibility(true);
+        }
     }
 
     private float getFadeoutAlpha() {
@@ -4682,7 +4680,6 @@ public final class NotificationPanelViewController implements Dumpable {
             mTunerService.addTunable(this, DOUBLE_TAP_SLEEP_LOCKSCREEN);
             mTunerService.addTunable(this, RETICKER_STATUS);
             mTunerService.addTunable(this, RETICKER_COLORED);
-            mTunerService.addTunable(this, NOTIFICATION_MATERIAL_DISMISS);
             mTunerService.addTunable(this, QS_UI_STYLE);
             // Theme might have changed between inflating this view and attaching it to the
             // window, so
@@ -4723,11 +4720,6 @@ public final class NotificationPanelViewController implements Dumpable {
                     mReTickerColored =
                             TunerService.parseIntegerSwitch(newValue, false);
                     break;
-                case NOTIFICATION_MATERIAL_DISMISS:
-                    mShowDimissButton =
-                            TunerService.parseIntegerSwitch(newValue, false);
-                    updateDismissAllVisibility();
-		    break;
                 case QS_UI_STYLE:
                     mIsA11Style = TunerService.parseInteger(newValue, 0) == 1;
                     break;
@@ -5385,11 +5377,11 @@ public final class NotificationPanelViewController implements Dumpable {
         }
         String reTickerContent;
         if (visibility && getExpandedFraction() != 1) {
-            mReTickerVisible = true;
             mNotificationStackScroller.setVisibility(View.GONE);
             StatusBarNotification sbn = mHeadsUpManager.getTopEntry().getRow().getEntry().getSbn();
             Notification notification = sbn.getNotification();
             String pkgname = sbn.getPackageName();
+            if (mCentralSurfaces != null) mCentralSurfaces.updateDismissAllVisibility(false);
             Drawable icon = null;
             try {
                 if (pkgname.equals("com.android.systemui")) {
@@ -5463,18 +5455,6 @@ public final class NotificationPanelViewController implements Dumpable {
     public void reTickerDismissal() {
         RetickerAnimations.revealAnimationHide(mReTickerComeback, mNotificationStackScroller);
         mReTickerComeback.getViewTreeObserver().removeOnComputeInternalInsetsListener(mInsetsListener);
-        mReTickerVisible = false;
-    }
-
-    public void updateDismissAllVisibility() {
-        if (mCentralSurfaces == null) return;
-
-        if (mShowDimissButton && mBarState != StatusBarState.KEYGUARD && !isFullyCollapsed()
-                && !isPanelVisibleBecauseOfHeadsUp() && !mReTickerVisible) {
-            mCentralSurfaces.updateDismissAllVisibility(true);
-        } else {
-            mCentralSurfaces.updateDismissAllVisibility(false);
-        }
     }
 
     private final OnComputeInternalInsetsListener mInsetsListener = internalInsetsInfo -> {
