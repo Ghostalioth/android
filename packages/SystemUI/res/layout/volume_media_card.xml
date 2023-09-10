@@ -43,7 +43,7 @@
         android:scrollHorizontally="true"
         android:textColor="@android:color/white"
         android:translationZ="@dimen/volume_dialog_media_elevation"
-        android:textSize="16dp"
+        android:textSize="12dp"
         android:layout_below="@id/title" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:scrollHorizontally="true"
         android:textColor="@android:color/white"
         android:translationZ="@dimen/volume_dialog_media_elevation"
-        android:textSize="22dp" />
+        android:textSize="16dp" />
 
     <LinearLayout
         android:id="@+id/buttons"
