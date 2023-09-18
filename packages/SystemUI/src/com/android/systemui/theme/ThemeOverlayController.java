@@ -911,6 +911,7 @@ public class ThemeOverlayController implements CoreStartable, Dumpable, TunerSer
         mDynamicSchemeLight = dynamicSchemeFromStyle(
                 mThemeStyle, color, false /* isDark */, mContrast);
         mDynamicOverlay = createDynamicOverlay();
+    }    
 
     protected FabricatedOverlay createNeutralOverlay() {
         FabricatedOverlay overlay = newFabricatedOverlay("neutral");
