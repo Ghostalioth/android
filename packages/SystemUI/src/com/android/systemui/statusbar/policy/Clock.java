@@ -549,7 +549,6 @@ public class Clock extends TextView implements
                 mShowDuration =
                         TunerService.parseInteger(newValue, SHOW_DURATION);
                 break;
-<<<<<<< HEAD
             case STATUS_BAR_CLOCK_FONT_STYLE:
                 mClockFontStyle =
                         TunerService.parseInteger(newValue, FONT_NORMAL);
@@ -559,7 +558,7 @@ public class Clock extends TextView implements
                 mClockColor =
                         TunerService.parseInteger(newValue, DEFAULT_CLOCK_COLOR);
                 updateClockColor();
-=======
+		break;
             case STATUS_BAR_CLOCK_SIZE:
                 mClockSize =
                         TunerService.parseInteger(newValue, 14);
@@ -569,7 +568,6 @@ public class Clock extends TextView implements
                 mClockSizeQsHeader =
                         TunerService.parseInteger(newValue, 14);
                 updateClockSize();
->>>>>>> 36c0ed44f2c7 (Clock: Add ability to resize QS & Statusbar Clock [1/2])
                 break;
             default:
                 break;
@@ -952,7 +950,6 @@ public class Clock extends TextView implements
                 break;
         }
     }
-}
 
     public void updateClockSize() {
         if (mQsHeader) {
