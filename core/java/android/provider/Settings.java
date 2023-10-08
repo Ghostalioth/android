@@ -4938,6 +4938,27 @@ public final class Settings {
          * @hide
          */
         public static final String HAPTIC_ON_SLIDER = "haptic_on_slider";
+        
+        /**
+         * Edge scrolling haptics intensity
+         * @hide
+         */
+        @Readable
+        public static final String EDGE_SCROLLING_HAPTICS_INTENSITY = "edge_scrolling_haptics_intensity";
+
+        /**
+         * Brightness sliding haptics intensity
+         * @hide
+         */
+        @Readable
+        public static final String BRIGHTNESS_SLIDER_HAPTICS_INTENSITY = "brightness_slider_haptics_intensity";
+
+        /**
+         * Volume sliding haptics intensity
+         * @hide
+         */
+        @Readable
+        public static final String VOLUME_SLIDER_HAPTICS_INTENSITY = "volume_slider_haptics_intensity";
 
         /**
          * Ringer volume. This is used internally, changing this value will not
