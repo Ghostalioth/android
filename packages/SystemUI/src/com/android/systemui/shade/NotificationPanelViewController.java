@@ -649,6 +649,8 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     private boolean mUseIslandNotification;
     private boolean mIsA11Style;
 
+    private boolean mNeedFlingAnimation = false;
+
     private final Runnable mFlingCollapseRunnable = () -> fling(0, false /* expand */,
             mNextCollapseSpeedUpFactor, false /* expandBecauseOfFalsing */);
     private final Runnable mAnimateKeyguardBottomAreaInvisibleEndRunnable =
@@ -2070,8 +2072,16 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
                 }
             }
         });
+        if (!mScrimController.isScreenOn() && !mNeedFlingAnimation) {
+            animator.setDuration(0);
+        }
         setAnimator(animator);
         animator.start();
+    }
+
+    @VisibleForTesting
+    void setNeedFlingAnimation(boolean need) {
+        mNeedFlingAnimation = need;
     }
 
     @VisibleForTesting
