@@ -491,8 +491,8 @@ public class NotificationIconContainer extends ViewGroup {
         int firstOverflowIndex = -1;
         int childCount = getChildCount();
         int maxStatusVisibleIcons = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.MAX_VISIBLE_NOTIFICATION_ICONS, MAX_STATIC_ICONS, UserHandle.USER_CURRENT);
-        int maxVisibleIcons = mOnLockScreen ? MAX_ICONS_ON_AOD :
+                Settings.System.MAX_VISIBLE_NOTIFICATION_ICONS, mMaxStaticIcons, UserHandle.USER_CURRENT);
+        int maxVisibleIcons = mOnLockScreen ? mMaxIconsOnAod :
                 mIsStaticLayout ? maxStatusVisibleIcons : childCount;
         float layoutEnd = getLayoutEnd();
         mVisualOverflowStart = 0;
