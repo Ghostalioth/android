@@ -221,12 +221,10 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
             Trace.beginSection("QSFragment#onCreateView");
             inflater = inflater.cloneInContext(new ContextThemeWrapper(getContext(),
                     R.style.Theme_SystemUI_QuickSettings));
-	} catch (Exception e) {
-            Log.d(TAG, "Exception occured during onCreateView");
+            return inflater.inflate(R.layout.qs_panel, container, false);
         } finally {
             Trace.endSection();
         }
-        return inflater.inflate(R.layout.qs_panel, container, false);
     }
 
     @Override
