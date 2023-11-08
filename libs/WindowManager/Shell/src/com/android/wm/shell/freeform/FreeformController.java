@@ -141,6 +141,7 @@ public final class FreeformController implements RemoteCallable<FreeformControll
     void startIntent(PendingIntent intent, Rect bounds) {
         final ActivityOptions options = ActivityOptions.makeBasic();
         options.setLaunchWindowingMode(WINDOWING_MODE_FREEFORM);
+        options.setTaskAlwaysOnTop(true);
         options.setPendingIntentBackgroundActivityLaunchAllowedByPermission(true);
         options.setPendingIntentBackgroundActivityStartMode(
                 ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED);
