@@ -60,6 +60,7 @@ import android.database.ContentObserver;
 import android.graphics.Color;
 import android.graphics.Insets;
 import android.graphics.Rect;
+import android.os.UserHandle;
 import android.graphics.Region;
 import android.hardware.power.Boost;
 import android.os.Bundle;
