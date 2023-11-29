@@ -121,6 +121,14 @@ public class ArcaneIdleManager {
                 !RunningServices.get(i).pkgList[0].toString().contains("gms") &&
                 !RunningServices.get(i).pkgList[0].toString().contains(".settings") &&
                 !RunningServices.get(i).pkgList[0].toString().contains(".GoogleCamera") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".wallpaper") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".lawnicons") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".viper4android") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".nekogram") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".gamespace") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".youtube") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".logcat") &&
+                !RunningServices.get(i).pkgList[0].toString().contains(".googlequicksearchbox") &&
                 !RunningServices.get(i).pkgList[0].toString().contains(".ims")) {
                     localActivityManager.killBackgroundProcesses(RunningServices.get(i).pkgList[0].toString());
             }
