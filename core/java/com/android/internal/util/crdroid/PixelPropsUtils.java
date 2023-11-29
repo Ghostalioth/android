@@ -108,6 +108,7 @@ public class PixelPropsUtils {
             "com.google.android.apps.cameralite",
             "com.google.android.euicc",
             "com.google.ar.core",
+            "com.google.android.as",
             "com.google.android.youtube",
             "com.google.android.apps.youtube.kids",
             "com.google.android.apps.youtube.music",
