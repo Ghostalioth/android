@@ -53,6 +53,7 @@ import com.android.app.animation.Interpolators;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.crdroid.ImageHelper;
 import com.android.settingslib.Utils;
+import com.android.systemui.Dependency;
 import com.android.systemui.Dumpable;
 import com.android.systemui.R;
 import com.android.systemui.colorextraction.SysuiColorExtractor;
@@ -77,6 +78,7 @@ import com.android.systemui.statusbar.phone.ScrimController;
 import com.android.systemui.statusbar.phone.ScrimState;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.tuner.TunerService;
+import com.android.systemui.util.NotificationUtils;
 import com.android.systemui.util.concurrency.DelayableExecutor;
 
 import lineageos.providers.LineageSettings;
@@ -110,6 +112,9 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
             "system:" + Settings.System.LOCKSCREEN_ALBUMART_FILTER;
 
     private static final String NOWPLAYING_SERVICE = "com.google.android.as";
+    private static final String ISLAND_NOTIFICATION =
+            "system:" + Settings.System.ISLAND_NOTIFICATION;
+
     private final StatusBarStateController mStatusBarStateController;
     private final SysuiColorExtractor mColorExtractor;
     private final TunerService mTunerService;
@@ -173,6 +178,8 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
 
     private boolean mShowMediaMetadata;
     private int mAlbumArtFilter;
+    private boolean mIslandEnabled;
+    private NotificationUtils notifUtils;
 
     private final MediaController.Callback mMediaListener = new MediaController.Callback() {
         @Override
@@ -182,6 +189,13 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
                 Log.v(TAG, "DEBUG_MEDIA: onPlaybackStateChanged: " + state);
             }
             if (state != null) {
+                if (mIslandEnabled) {
+                    if (PlaybackState.STATE_PLAYING == getMediaControllerPlaybackState(mMediaController) && mMediaMetadata != null) {
+                        notifUtils.showNowPlayingNotification(mMediaMetadata);
+                    } else {
+                        notifUtils.cancelNowPlayingNotification();
+                    }
+                }
                 if (!isPlaybackActive(state.getState())) {
                     clearCurrentMediaNotification();
                 }
@@ -197,6 +211,10 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
             }
             mMediaArtworkProcessor.clearCache();
             mMediaMetadata = metadata;
+            if (mIslandEnabled) {
+                notifUtils.cancelNowPlayingNotification();
+                notifUtils.showNowPlayingNotification(metadata);
+            }
             dispatchUpdateMediaMetaData(true /* changed */, true /* allowAnimation */);
         }
     };
@@ -245,8 +263,10 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
         dumpManager.registerDumpable(this);
 
         mTunerService = tunerService;
+        notifUtils = new NotificationUtils(mContext);
         mTunerService.addTunable(this, LOCKSCREEN_MEDIA_METADATA);
         mTunerService.addTunable(this, LOCKSCREEN_ALBUMART_FILTER);
+        mTunerService.addTunable(this, ISLAND_NOTIFICATION);
     }
 
     @Override
@@ -262,10 +282,27 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
                         TunerService.parseInteger(newValue, 0);
                 dispatchUpdateMediaMetaData(false /* changed */, true /* allowAnimation */);
                 break;
+            case ISLAND_NOTIFICATION:
+                    mIslandEnabled = 
+                        TunerService.parseIntegerSwitch(newValue, true);
+                break;
             default:
                 break;
         }
     }
+
+    private final TunerService.Tunable mTunable = new TunerService.Tunable() {
+        @Override
+        public void onTuningChanged(String key, String newValue) {
+            switch (key) {
+                case ISLAND_NOTIFICATION:
+                    mIslandEnabled = TunerService.parseIntegerSwitch(newValue, true);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     private void setupNotifPipeline() {
         mNotifPipeline.addCollectionListener(new NotifCollectionListener() {
