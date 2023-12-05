@@ -114,6 +114,8 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
     private static final String NOWPLAYING_SERVICE = "com.google.android.as";
     private static final String ISLAND_NOTIFICATION =
             "system:" + Settings.System.ISLAND_NOTIFICATION;
+    private static final String ISLAND_NOTIFICATION_NOW_PLAYING =
+            "system:" + Settings.System.ISLAND_NOTIFICATION_NOW_PLAYING;
 
     private final StatusBarStateController mStatusBarStateController;
     private final SysuiColorExtractor mColorExtractor;
@@ -179,6 +181,7 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
     private boolean mShowMediaMetadata;
     private int mAlbumArtFilter;
     private boolean mIslandEnabled;
+    private boolean mIslandNowPlayingEnabled;
     private NotificationUtils notifUtils;
 
     private final MediaController.Callback mMediaListener = new MediaController.Callback() {
@@ -189,7 +192,7 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
                 Log.v(TAG, "DEBUG_MEDIA: onPlaybackStateChanged: " + state);
             }
             if (state != null) {
-                if (mIslandEnabled) {
+                if (mIslandEnabled && mIslandNowPlayingEnabled) {
                     if (PlaybackState.STATE_PLAYING == getMediaControllerPlaybackState(mMediaController) && mMediaMetadata != null) {
                         notifUtils.showNowPlayingNotification(mMediaMetadata);
                     } else {
@@ -211,7 +214,7 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
             }
             mMediaArtworkProcessor.clearCache();
             mMediaMetadata = metadata;
-            if (mIslandEnabled) {
+            if (mIslandEnabled && mIslandNowPlayingEnabled) {
                 notifUtils.cancelNowPlayingNotification();
                 notifUtils.showNowPlayingNotification(metadata);
             }
@@ -267,6 +270,7 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
         mTunerService.addTunable(this, LOCKSCREEN_MEDIA_METADATA);
         mTunerService.addTunable(this, LOCKSCREEN_ALBUMART_FILTER);
         mTunerService.addTunable(this, ISLAND_NOTIFICATION);
+        mTunerService.addTunable(this, ISLAND_NOTIFICATION_NOW_PLAYING);
     }
 
     @Override
@@ -286,23 +290,14 @@ public class NotificationMediaManager implements Dumpable, TunerService.Tunable 
                     mIslandEnabled = 
                         TunerService.parseIntegerSwitch(newValue, true);
                 break;
+            case ISLAND_NOTIFICATION_NOW_PLAYING:
+                    mIslandNowPlayingEnabled = 
+                        TunerService.parseIntegerSwitch(newValue, true);
+                break;
             default:
                 break;
         }
     }
-
-    private final TunerService.Tunable mTunable = new TunerService.Tunable() {
-        @Override
-        public void onTuningChanged(String key, String newValue) {
-            switch (key) {
-                case ISLAND_NOTIFICATION:
-                    mIslandEnabled = TunerService.parseIntegerSwitch(newValue, true);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
     private void setupNotifPipeline() {
         mNotifPipeline.addCollectionListener(new NotifCollectionListener() {
