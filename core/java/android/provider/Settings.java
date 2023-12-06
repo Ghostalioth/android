@@ -6420,12 +6420,6 @@ public final class Settings {
         public static final String QS_DUAL_TONE = "qs_dual_tone";
 
         /**
-         * Whether to show daily data usage in the QS footer.
-         * @hide
-         */
-        public static final String QS_SHOW_DATA_USAGE = "qs_show_data_usage";
-
-        /**
          * Whether to display 4G icon instead LTE
          * @hide
          */
