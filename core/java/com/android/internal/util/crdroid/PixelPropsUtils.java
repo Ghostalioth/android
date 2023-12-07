@@ -28,6 +28,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -163,7 +164,7 @@ public class PixelPropsUtils {
         propsToChangeMeizu.put("MODEL", "meizu 16th Plus");
     }
 
-    private static String getBuildID(String fingerprint) {
+    public static String getBuildID(String fingerprint) {
         Pattern pattern = Pattern.compile("([A-Za-z0-9]+\\.\\d+\\.\\d+\\.\\w+)");
         Matcher matcher = pattern.matcher(fingerprint);
 
@@ -173,7 +174,7 @@ public class PixelPropsUtils {
         return "";
     }
 
-    private static String getDeviceName(String fingerprint) {
+    public static String getDeviceName(String fingerprint) {
         String[] parts = fingerprint.split("/");
         if (parts.length >= 2) {
             return parts[1];
@@ -232,6 +233,8 @@ public class PixelPropsUtils {
                 if (deviceArrays.length > 0) {
                     int randomIndex = new Random().nextInt(deviceArrays.length);
                     int selectedArrayResId = resources.getIdentifier(deviceArrays[randomIndex], "array", packageName);
+                    String selectedArrayName = resources.getResourceEntryName(selectedArrayResId);
+
                     String[] selectedDeviceProps = resources.getStringArray(selectedArrayResId);
 
                     setPropValue("PRODUCT", selectedDeviceProps[0]);
@@ -249,6 +252,8 @@ public class PixelPropsUtils {
                     setPropValue("ID", selectedDeviceProps[8].isEmpty() ? getBuildID(selectedDeviceProps[5]) : selectedDeviceProps[8]);
                     setPropValue("TYPE", selectedDeviceProps[9].isEmpty() ? "user" : selectedDeviceProps[9]);
                     setPropValue("TAGS", selectedDeviceProps[10].isEmpty() ? "release-keys" : selectedDeviceProps[10]);
+
+                    Settings.System.putString(context.getContentResolver(), Settings.System.PPU_SPOOF_BUILD_GMS_ARRAY, selectedArrayName);
                 } else {
                     Log.e(TAG, "No device arrays found.");
                 }
